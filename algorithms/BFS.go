@@ -2,27 +2,27 @@ package algorithms
 
 import (
 	"github.com/Athla/OneHour/data_structures"
-	"log"
 )
 
-func Travel(n *data_structures.Node) map[int]*data_structures.Node {
-	result := make(map[int]*data_structures.Node)
-	if v, ok := result[n.Value]; ok == false {
-		result[n.Value] = v
-	}
-	if n.Neighbours != nil {
-		for _, b := range n.Neighbours {
-			Travel(b)
+func BFS(g data_structures.Graph) []int {
+	root := g.Nodes[0]
+	seen := make(map[*data_structures.Node]bool)
+	order := make([]int, 0)
+	q := data_structures.Queue{}
+
+	seen[&root] = true
+	q.Enqueue(root)
+
+	for !q.IsEmpty() {
+		curr := q.Dequeue()
+		order = append(order, curr.Value)
+		for _, v := range curr.Neighbours {
+			if !seen[&v] {
+				seen[&v] = true
+				q.Enqueue(v)
+			}
 		}
 	}
 
-	return result
-}
-
-func BFS(g *data_structures.Graph) {
-	var res map[int]*data_structures.Node
-	for _, v := range g.Nodes {
-		res = Travel(v)
-	}
-	log.Println(res)
+	return order
 }
