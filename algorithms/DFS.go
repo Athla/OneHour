@@ -4,21 +4,21 @@ import (
 	"github.com/Athla/OneHour/data_structures"
 )
 
-func Travel(n *data_structures.Node) (map[*data_structures.Node]int, []int) {
-	result := make(map[*data_structures.Node]int)
-	var order []int
-	if v, ok := result[n]; !ok {
-		result[n] = v
-		order = append(order, n.Value)
+func walk(root *data_structures.TreeNode, seen map[*data_structures.TreeNode]bool) (out []int) {
+	if root == nil {
+		return out
 	}
-	if n.Neighbours != nil {
-		for _, b := range n.Neighbours {
-			Travel(&b)
-		}
-	}
-
-	return result, order
+	walk(root.Left)
+	return out
 }
 
-func DFS(g *data_structures.Graph) {
+// Will implement on a tree
+func DFS(g *data_structures.Tree) []int {
+	seen := make(map[*data_structures.TreeNode]bool)
+	s := &data_structures.Stack{}
+	if s.IsEmpty() {
+		return nil
+	}
+	root := g.Root
+	return walk(root, seen)
 }

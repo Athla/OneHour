@@ -1,14 +1,14 @@
 package data_structures
 
-type Queue []Node
+type Queue []*GraphNode
 
-func (q *Queue) Enqueue(i Node) {
+func (q *Queue) Enqueue(i *GraphNode) {
 	*q = append(*q, i)
 }
 
-func (q *Queue) Dequeue() Node {
+func (q *Queue) Dequeue() *GraphNode {
 	if q.IsEmpty() {
-		return Node{}
+		return &GraphNode{}
 	}
 	e := (*q)[0]
 	*q = (*q)[1:]
