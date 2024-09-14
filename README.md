@@ -4,11 +4,17 @@
 ```
 .
 ├── algorithms
-│   └── BFS.go
+│   ├── Algorithms.go
+│   ├── Structures.go
+│   └── Here.go
 ├── data_structures
-│   ├── Graph.go
-│   ├── Node.go
-│   └── Standard.go
+│   ├── Data.go
+│   ├── Structures.go
+│   └── Here.go
+├── Leetcode
+│   ├── Leetcode.go
+│   ├── Problems.go
+│   └── Here.go
 ├── go.mod
 ├── go.sum
 ├── main.go
