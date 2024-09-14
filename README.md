@@ -1,6 +1,7 @@
 # One Hour
-- This projects is where I will try to keep up and study at least one hour per day, now focusing in DSA. In 
+- This projects is where I will try to keep up and study at least one hour per day, now focusing in DSA.
 
+```
 .
 ├── algorithms
 │   └── BFS.go
@@ -14,3 +15,6 @@
 ├── main_test.go
 └── README.md
 
+```
+
+- Feel free to leave comments or to use it for yourself!
