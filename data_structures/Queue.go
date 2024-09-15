@@ -1,18 +1,20 @@
 package data_structures
 
-type Queue []*GraphNode
+import "errors"
 
-func (q *Queue) Enqueue(i *GraphNode) {
+type Queue []int
+
+func (q *Queue) Enqueue(i int) {
 	*q = append(*q, i)
 }
 
-func (q *Queue) Dequeue() *GraphNode {
+func (q *Queue) Dequeue() (int, error) {
 	if q.IsEmpty() {
-		return &GraphNode{}
+		return 0, errors.New("Queue empty.")
 	}
 	e := (*q)[0]
 	*q = (*q)[1:]
-	return e
+	return e, nil
 }
 
 func (q *Queue) IsEmpty() bool {

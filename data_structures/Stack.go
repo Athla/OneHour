@@ -1,13 +1,13 @@
 package data_structures
 
 type Stack struct {
-	Values []*Node
+	Values []*int
 }
 
-func (s *Stack) Push(v *Node) {
+func (s *Stack) Push(v *int) {
 	s.Values = append(s.Values, v)
 }
-func (s *Stack) Pop() *Node {
+func (s *Stack) Pop() *int {
 	if s.IsEmpty() {
 		return nil
 	}
