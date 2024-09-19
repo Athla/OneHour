@@ -1,6 +1,6 @@
 # What gotta be done.
 
-- [ ] Heaps
+- [x] Heaps
 - [ ] Sets
 - [ ] Maps
 - [ ] Linked Lists

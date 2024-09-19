@@ -1,4 +1,6 @@
-# Rest pushes you forward.
+# Day 006
+
+## Rest pushes you forward.
 ***
 - After resting in day 5, I woke up refreshed and without any brain fog, which was awesome.
 - Before I started the day, I decided to create a list of objectives of the current day. It was a fairly simple list, but it worked for me.

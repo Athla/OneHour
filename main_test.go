@@ -10,8 +10,8 @@ import (
 
 var (
 	ExpectedBFS = []int{1, 2, 3, 3, 4, 4}
-	Unsorted    = []int{10, 6, 2, 1, 5, 8, 3, 4, 7, 9}
-	Sorted      = []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+	Unsorted    = []int{10, 6, 2, 1, 5, 8, 3, 4, 7, 9, 15, 18, 22, 22, 19}
+	Sorted      = []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 18, 19, 22, 22}
 )
 
 func TestBFS(T *testing.T) {
