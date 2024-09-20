@@ -2,10 +2,16 @@ package data_structures
 
 type Stack struct {
 	Values []*int
+	Lenght uint
+}
+
+func NewStack() *Stack {
+	return &Stack{Lenght: 0}
 }
 
 func (s *Stack) Push(v *int) {
 	s.Values = append(s.Values, v)
+	s.Lenght++
 }
 func (s *Stack) Pop() *int {
 	if s.IsEmpty() {
@@ -14,11 +20,12 @@ func (s *Stack) Pop() *int {
 
 	p := s.Values[len(s.Values)-1]
 	s.Values = s.Values[:len(s.Values)-1]
+	s.Lenght--
 	return p
 }
 
 func (s *Stack) IsEmpty() bool {
-	if len(s.Values) == 0 {
+	if s.Lenght == 0 {
 		return false
 	}
 	return true

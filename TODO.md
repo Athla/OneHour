@@ -1,10 +1,10 @@
 # What gotta be done.
 
 - [x] Heaps
-- [ ] Sets
-- [ ] Maps
-- [ ] Linked Lists
-- [ ] Graphs
+- [x] Sets
+- [x] Maps
+- [x] Linked Lists
+- [x] Graphs
 - [ ] Better understand of Trees
     - [ ] Binary Trees
 - [ ] Graphs and Tree related algorithms

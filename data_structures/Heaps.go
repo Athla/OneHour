@@ -1,10 +1,5 @@
 package data_structures
 
-import (
-	"container/heap"
-	"fmt"
-)
-
 type MinHeap []int
 
 func (h MinHeap) Len() int {
@@ -32,11 +27,4 @@ func (h *MinHeap) Pop() interface{} {
 }
 
 func main() {
-	h := &MinHeap{2, 1, 5}
-	heap.Init(h)
-	heap.Push(h, 3)
-	fmt.Printf("Min: %d\n", (*h)[0])
-	for h.Len() > 0 {
-		fmt.Printf("%d ", heap.Pop(h))
-	}
 }

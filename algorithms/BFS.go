@@ -12,8 +12,8 @@ func BFS(g data_structures.Graph) []int {
 	order := make([]int, 0)
 	q := data_structures.Queue{}
 
-	seen[&root] = true
-	q.Enqueue(root)
+	seen[root.Value] = true
+	q.Enqueue(*root.Value)
 
 	for !q.IsEmpty() {
 		curr, err := q.Dequeue()

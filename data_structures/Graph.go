@@ -1,12 +1,22 @@
 package data_structures
 
-type Graph struct {
-	Nodes []int
+type GraphNode struct {
+	Value      *int
+	Neighbours []GraphNode
 }
 
-func (g *Graph) AddNode(value int) {
-	var node = value
+type Graph struct {
+	Nodes []GraphNode
+}
+
+func NewGraph() *Graph {
+	return &Graph{}
+}
+
+func (g *Graph) AddNode(value int) GraphNode {
+	var node = GraphNode{Value: &value}
 	g.Nodes = append(g.Nodes, node)
+	return node
 }
 
 func (g *Graph) AddEdge(n1, n2 GraphNode) {

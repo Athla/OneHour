@@ -6,48 +6,54 @@ type linkedListNode struct {
 }
 
 type LinkedList struct {
-	head   *linkedListNode
-	lenght int
+	Head   *linkedListNode
+	Lenght int
+}
+
+func NewLinkedList() *LinkedList {
+	return &LinkedList{
+		Lenght: 0,
+	}
 }
 
 func (l *LinkedList) InsertAtHead(v int) {
 	tmp := &linkedListNode{v, nil}
 
-	if l.head == nil {
-		l.head = tmp
+	if l.Head == nil {
+		l.Head = tmp
 	} else {
-		tmp2 := l.head
-		l.head = tmp
+		tmp2 := l.Head
+		l.Head = tmp
 		tmp.next = tmp2
 	}
 
-	l.lenght++
+	l.Lenght++
 }
 
 func (l *LinkedList) InsertAtTail(v int) {
 	tmp := &linkedListNode{v, nil}
 
-	if l.head == nil {
-		l.head = tmp
+	if l.Head == nil {
+		l.Head = tmp
 	} else {
-		tmp2 := l.head
+		tmp2 := l.Head
 		for tmp2.next != nil {
 			tmp2 = tmp2.next
 		}
 		tmp2.next = tmp
 	}
 
-	l.lenght++
+	l.Lenght++
 }
 
 func (l *LinkedList) Insert(idx, v int) {
 	if idx == 0 {
 		l.InsertAtHead(v)
-	} else if idx == l.lenght-1 { //ZERO BASED INDEX DO NOT FORGET
+	} else if idx == l.Lenght-1 { //ZERO BASED INDEX DO NOT FORGET
 		l.InsertAtTail(v)
 	} else {
 		tmp := &linkedListNode{v, nil}
-		tmp2 := l.head
+		tmp2 := l.Head
 
 		for i := 0; i < idx-1; i++ {
 			tmp2 = tmp.next
@@ -56,45 +62,45 @@ func (l *LinkedList) Insert(idx, v int) {
 		tmp.next = tmp2.next
 		tmp2.next = tmp
 
-		l.lenght++
+		l.Lenght++
 	}
 }
 
 func (l *LinkedList) DeleteHead() {
-	tmp := l.head
-	l.head = tmp.next
-	l.lenght--
+	tmp := l.Head
+	l.Head = tmp.next
+	l.Lenght--
 }
 func (l *LinkedList) DeleteTail() {
-	tmp1 := l.head
+	tmp1 := l.Head
 	var tmp2 *linkedListNode
 	for tmp1.next != nil {
 		tmp2 = tmp1
 		tmp1 = tmp1.next
 	}
 	tmp2.next = nil
-	l.lenght--
+	l.Lenght--
 }
 
 func (l *LinkedList) DeleteAt(n int) {
 	if n == 0 {
 		l.DeleteHead()
-	} else if n == l.lenght-1 {
+	} else if n == l.Lenght-1 {
 		l.DeleteTail()
 	} else {
-		tmp1 := l.head
+		tmp1 := l.Head
 		for i := 0; i < n-1; i++ {
 			tmp1 = tmp1.next
 		}
 		tmp2 := tmp1.next
 		tmp1.next = tmp2.next
-		l.lenght--
+		l.Lenght--
 	}
 }
 
 func (l *LinkedList) Reverse() {
 	var curr, prev, next *linkedListNode
-	curr = l.head
+	curr = l.Head
 	prev = nil
 
 	for curr != nil {
@@ -104,5 +110,5 @@ func (l *LinkedList) Reverse() {
 		curr = next
 	}
 
-	l.head = prev
+	l.Head = prev
 }
