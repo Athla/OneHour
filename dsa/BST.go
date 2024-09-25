@@ -1,4 +1,4 @@
-package data_structures
+package dsa
 
 import (
 	"log"
@@ -13,9 +13,6 @@ type BST struct {
 }
 
 func (t *BST) Insert(n *TreeNode, v int) *TreeNode {
-	if t.Root == nil {
-		t.Root = &TreeNode{v, nil, nil}
-	}
 	if n == nil {
 		return &TreeNode{v, nil, nil}
 	}
@@ -24,7 +21,7 @@ func (t *BST) Insert(n *TreeNode, v int) *TreeNode {
 		n.Left = t.Insert(n.Left, v)
 	}
 	if v > n.Value {
-		n.Left = t.Insert(n.Right, v)
+		n.Right = t.Insert(n.Right, v)
 	}
 
 	return n
@@ -51,8 +48,8 @@ func (t *BST) TraversePreOrder(n *TreeNode) {
 		return
 	} else {
 		log.Println(n.Value, " ")
-		t.TraverseInOrder(n.Left)
-		t.TraverseInOrder(n.Right)
+		t.TraversePreOrder(n.Left)
+		t.TraversePreOrder(n.Right)
 	}
 }
 func (t *BST) TraverseInOrder(n *TreeNode) {
@@ -69,8 +66,8 @@ func (t *BST) TraversePostOrder(n *TreeNode) {
 	if n == nil {
 		return
 	} else {
-		t.TraverseInOrder(n.Left)
-		t.TraverseInOrder(n.Right)
+		t.TraversePostOrder(n.Left)
+		t.TraversePostOrder(n.Right)
 		log.Println(n.Value, " ")
 	}
 }

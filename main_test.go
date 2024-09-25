@@ -4,28 +4,54 @@ import (
 	"container/heap"
 	"testing"
 
-	"github.com/Athla/OneHour/algorithms"
-	"github.com/Athla/OneHour/data_structures"
+	data_structures "github.com/Athla/OneHour/dsa"
 	"github.com/stretchr/testify/assert"
 )
 
 var (
-	ExpectedBFS  = []int{1, 2, 3, 3, 4, 4}
+	ExpectedBFS  = []int{1, 2, 3, 4, 7, 5, 6}
+	ExpectedDFS  = []int{1, 2, 7, 3, 4, 5, 6}
 	Unsorted     = []int{10, 6, 2, 1, 5, 8, 3, 4, 7, 9, 15, 18, 22, 22, 19}
 	Sorted       = []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 18, 19, 22, 22}
 	ExpectedHeap = &data_structures.MinHeap{1, 2, 5, 3}
 )
 
-func TestBFS(T *testing.T) {
-	// v := data_structures.CreateStdGraph()
-	// T.Logf("%+v", v)
-	// order := algorithms.BFS(v)
-	// T.Logf("Order: %v", order)
-	// assert.Equal(T, ExpectedBFS, order)
+func TestBinarySearch(T *testing.T) {
+	arr := []int{0, 1, 2, 3, 5, 6, 7, 8, 9, 10}
+
+	ok, idx := data_structures.BinarySearch(arr, 10)
+	assert.Equal(T, ok, true)
+	assert.Equal(T, idx, 9)
+
+	ok, idx = data_structures.BinarySearch(arr, 4)
+	assert.Equal(T, ok, false)
+	assert.Equal(T, idx, -1)
+}
+
+func TestBFS_DFS(T *testing.T) {
+	g := &data_structures.Graph{
+		Edges: map[int][]int{
+			1: {2, 3, 4},
+			2: {7},
+			3: {4, 7},
+			4: {5, 6},
+			5: {},
+			6: {},
+			7: {},
+		},
+	}
+
+	bfs := g.BFS(1)
+	T.Log("\nBFS traversal starting from vertex 0:", bfs)
+	assert.Equal(T, bfs, ExpectedBFS)
+
+	dfs := g.DFS(1)
+	T.Log("\nDFS traversal starting from vertex 0:", dfs)
+	assert.Equal(T, dfs, ExpectedDFS)
 }
 
 func TestQuickSort(t *testing.T) {
-	out := algorithms.QuickSort(Unsorted)
+	out := data_structures.QuickSort(Unsorted)
 
 	t.Log("\n\tRunning QuickSort")
 	if ok := assert.Equal(t, out, Sorted); !ok {
@@ -36,7 +62,7 @@ func TestQuickSort(t *testing.T) {
 }
 
 func TestMergeSort(t *testing.T) {
-	out := algorithms.MergeSort(Unsorted)
+	out := data_structures.MergeSort(Unsorted)
 
 	t.Log("\n\tRunning MergeSort")
 	if ok := assert.Equal(t, out, Sorted); !ok {
