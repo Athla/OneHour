@@ -1,8 +1,7 @@
 package dsa
 
 func (g *Graph) BFS(root int) (order []int) {
-	seen := map[int]bool{}
-
+	seen := make(map[int]bool)
 	q := NewQueue()
 	q.Enqueue(root)
 	seen[root] = true

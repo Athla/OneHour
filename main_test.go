@@ -9,10 +9,21 @@ import (
 )
 
 var (
-	ExpectedBFS  = []int{1, 2, 3, 4, 7, 5, 6}
-	ExpectedDFS  = []int{1, 2, 7, 3, 4, 5, 6}
-	Unsorted     = []int{10, 6, 2, 1, 5, 8, 3, 4, 7, 9, 15, 18, 22, 22, 19}
-	Sorted       = []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 18, 19, 22, 22}
+	ExpectedBFS   = []int{1, 2, 3, 4, 7, 5, 6}
+	ExpectedDFS   = []int{1, 2, 7, 3, 4, 5, 6}
+	Unsorted      = []int{10, 6, 2, 1, 5, 8, 3, 4, 7, 9, 15, 18, 22, 22, 19}
+	Sorted        = []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 18, 19, 22, 22}
+	StandardGraph = &data_structures.Graph{
+		Edges: map[int][]int{
+			1: {2, 3, 4},
+			2: {7},
+			3: {4, 7},
+			4: {5, 6},
+			5: {},
+			6: {},
+			7: {},
+		},
+	}
 	ExpectedHeap = &data_structures.MinHeap{1, 2, 5, 3}
 )
 
@@ -27,25 +38,14 @@ func TestBinarySearch(T *testing.T) {
 	assert.Equal(T, ok, false)
 	assert.Equal(T, idx, -1)
 }
-
-func TestBFS_DFS(T *testing.T) {
-	g := &data_structures.Graph{
-		Edges: map[int][]int{
-			1: {2, 3, 4},
-			2: {7},
-			3: {4, 7},
-			4: {5, 6},
-			5: {},
-			6: {},
-			7: {},
-		},
-	}
-
-	bfs := g.BFS(1)
+func TestBFS(T *testing.T) {
+	bfs := StandardGraph.BFS(1)
 	T.Log("\nBFS traversal starting from vertex 0:", bfs)
 	assert.Equal(T, bfs, ExpectedBFS)
+}
 
-	dfs := g.DFS(1)
+func TestDFS(T *testing.T) {
+	dfs := StandardGraph.DFS(1)
 	T.Log("\nDFS traversal starting from vertex 0:", dfs)
 	assert.Equal(T, dfs, ExpectedDFS)
 }

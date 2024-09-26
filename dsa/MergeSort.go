@@ -9,31 +9,32 @@ func mergeSort(arr []int) []int {
 		return arr
 	}
 
-	left := mergeSort(arr[:len(arr)/2])
-	right := mergeSort(arr[len(arr)/2:])
+	left := mergeSort(arr[len(arr)/2:])
+	right := mergeSort(arr[:len(arr)/2])
 	return merge(left, right)
 }
 
 func merge(a, b []int) []int {
-	final := []int{}
+	var result []int
 	i, j := 0, 0
 
 	for i < len(a) && j < len(b) {
 		if a[i] < b[j] {
-			final = append(final, a[i])
+			result = append(result, a[i])
 			i++
 		} else {
-			final = append(final, b[j])
+			result = append(result, b[j])
 			j++
 		}
 	}
 
 	for ; i < len(a); i++ {
-		final = append(final, a[i])
+		result = append(result, a[i])
 	}
 	for ; j < len(b); j++ {
-		final = append(final, b[j])
+		result = append(result, b[j])
 	}
 
-	return final
+	return result
+
 }
