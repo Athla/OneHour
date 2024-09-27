@@ -25,6 +25,3 @@ func (h *MinHeap) Pop() interface{} {
 	*h = old[:n-1]
 	return x
 }
-
-func main() {
-}
