@@ -2,6 +2,7 @@ package leetcode
 
 import "sort"
 
+// Without bucketing
 func topKFrequent(nums []int, k int) []int {
 	seen := make(map[int]int)
 
@@ -25,4 +26,32 @@ func topKFrequent(nums []int, k int) []int {
 	}
 
 	return res
+}
+
+// With bucketing
+func TopKFrequent(nums []int, k int) []int {
+	seen := make(map[int]int)
+
+	for _, val := range nums {
+		seen[val]++
+	}
+
+	buck := make([][]int, len(nums)+1)
+
+	for k, v := range seen {
+		buck[v] = append(buck[v], k)
+	}
+
+	ans := make([]int, 0, k)
+
+	for i := len(buck) - 1; i >= 0; i-- {
+		for _, val := range buck[i] {
+			if k > 0 {
+				ans = append(ans, val)
+				k--
+			}
+		}
+	}
+
+	return ans
 }
