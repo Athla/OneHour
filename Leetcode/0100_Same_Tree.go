@@ -20,7 +20,7 @@ func isSameTree(p *dsa.TreeNode, q *dsa.TreeNode) bool {
 		return false
 	}
 
-	if p.Value != q.Value {
+	if p.Val != q.Val {
 		return false
 	}
 
